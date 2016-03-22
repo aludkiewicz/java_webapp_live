@@ -22,7 +22,22 @@ public class CreationContoller {
         @RequestParam(value = "age", required = true) String age,
         @RequestParam(value = "albums", required = false) List<Album> albums) {
         
-        dao.createAndSaveUser(new User(username, email, age));
+        dao.createAndSaveObject(new User(username, email, age));
+    }
+    
+    @RequestMapping(value = "/album")
+    public void createAndSaveAlbum(
+        @RequestParam(value = "title", required = true) String title,
+        @RequestParam(value = "songs", required = true) List<String> songs,
+        @RequestParam(value = "artists", required = true) List<String> artists) {
+        
+        Album album = new Album();
+        album.setArtists(artists);
+        album.setSongs(songs);
+        album.setTitle(title);
+        
+        dao.createAndSaveObject(album);
+        
     }
 
 }

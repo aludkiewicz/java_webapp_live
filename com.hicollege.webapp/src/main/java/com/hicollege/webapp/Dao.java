@@ -15,8 +15,10 @@ public class Dao {
     private SessionFactory sessionFactory;
     
     @Transactional
-    public void createAndSaveUser(User user) {
+    public void createAndSaveObject(Object user) {
         sessionFactory.getCurrentSession().save(user);
     }
+    
+    
 
 }
